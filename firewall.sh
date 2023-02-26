@@ -26,6 +26,8 @@ iptables -A DOCKER-USER -i <public interface> -j FILTERS
 # Allow some IP or a an IP and a specific port
 iptables -A FILTERS -s <ip> -j ACCEPT
 iptables -A FILTERS -p tcp -s <ip> --dport 3306 -j ACCEPT
+
+# Allow containers to speak together
 iptables -A FILTERS -s <docker network>/24 -j ACCEPT
 
 # Juste drop a few invalid things
